@@ -1,0 +1,36 @@
+Occasion:
+Jim's birthday
+People:
+Andy
+Maria
+Bob
+John
+Items:
+A gift card - John - 1000
+A t-shirt - John - 1200
+A greeting card - Andy - 200
+Flowers - Maria - 1000
+A bag - Bob - 1600
+
+Overview:
+Total spent is 5000.
+There are 4 people, so each should spend 1250.
+
+Initially, Andy has spent 200, Maria 1000, Bob 1600, John 2200.
+
+To do:
+Bob sends 150 to John
+Maria sends 150 to Bob
+Maria sends 300 to John
+Andy sends 200 to Maria
+Andy sends 350 to Bob
+Andy sends 500 to John
+
+Explanation:
+Andy's expenses: 200 + 200 + 350 + 500 = 1250
+
+Maria's expenses: 1000 + 150 + 300 - 200 = 1250
+
+Bob's expenses: 1600 + 150 - 150 - 350 = 1250
+
+John's expenses: 2200 - 150 - 300 - 500 = 1250
