@@ -13,6 +13,14 @@ from wordfreq import zipf_frequency
 
 lemmatizer = WordNetLemmatizer()
 translator = Translator()
+src_lang = "en"
+dest_lang = "ru"
+
+# верхняя и нижняя границы частотности слов выбираются в зависимости от уровня студента,
+# текущие значения подходят для студента уровня C1
+frq_lower = 1.5
+frq_upper = 2.7
+
 answer_options = [
     "Good!\n",
     "Very good!\n",
@@ -73,7 +81,7 @@ def get_word_set(text):
     pos = [nltk.pos_tag([word]) for word in words]
     word_set = set({})
     for word in words:
-        if word.isalpha() and 1.5 < zipf_frequency(word, 'en') <= 2.7 and word.islower():
+        if word.isalpha() and frq_lower < zipf_frequency(word, src_lang) <= frq_upper and word.islower():
             word_set.add(word)
     
     return word_set
@@ -139,7 +147,7 @@ def translate_options(word):
     они сохраняются в список options с порядковым номером.
     Если вариант только один, то options - строка, содержащая этот вариант.
     """
-    translation = translator.translate(word, src="en", dest="ru")
+    translation = translator.translate(word, src_lang, dest_lang)
     
     if translation.extra_data["all-translations"]:
         options = translation.extra_data["all-translations"][0][1]
