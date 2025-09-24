@@ -1,14 +1,13 @@
-import nltk
 import random
 import tkinter.filedialog
 
-from docx import Document
-from docx.shared import Inches
-from googletrans import Translator, constants
+import nltk
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer 
-from pypdf import errors
-from pypdf import PdfReader
+
+from docx import Document
+from googletrans import Translator
+from pypdf import errors, PdfReader
 from wordfreq import zipf_frequency
 
 lemmatizer = WordNetLemmatizer()
@@ -147,7 +146,7 @@ def translate_options(word):
     они сохраняются в список options с порядковым номером.
     Если вариант только один, то options - строка, содержащая этот вариант.
     """
-    translation = translator.translate(word, src_lang, dest_lang)
+    translation = translator.translate(word, src=src_lang, dest=dest_lang)
     
     if translation.extra_data["all-translations"]:
         options = translation.extra_data["all-translations"][0][1]

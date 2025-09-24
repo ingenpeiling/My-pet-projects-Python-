@@ -1,4 +1,3 @@
-import os
 import shutil
 import sqlite3 as sq
 
@@ -29,7 +28,7 @@ def create_database():
     item_price INTEGER CHECK (item_price > 0),
     person_id INTEGER NOT NULL,
     occasion_id INTEGER NOT NULL,
-    FOREIGN KEY (person_id) REFERENCES people (person_id)
+    FOREIGN KEY (person_id) REFERENCES people (person_id),
     FOREIGN KEY (occasion_id) REFERENCES occasions(occasion_id)
     )
     """
@@ -42,7 +41,7 @@ def create_database():
     amount INTEGER CHECK (amount > 0),
     occasion_id INTEGER NOT NULL,
     FOREIGN KEY (sender_id) REFERENCES people (person_id),
-    FOREIGN KEY (receiver_id) REFERENCES people (person_id)
+    FOREIGN KEY (receiver_id) REFERENCES people (person_id),
     FOREIGN KEY (occasion_id) REFERENCES occasions(occasion_id)
     )
     """
