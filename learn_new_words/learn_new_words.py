@@ -12,6 +12,10 @@ from wordfreq import zipf_frequency
 
 lemmatizer = WordNetLemmatizer()
 translator = Translator()
+
+# язык для токенизации в nltk
+language = "english"
+# языки для перевода в googletrans
 src_lang = "en"
 dest_lang = "ru"
 
@@ -76,7 +80,7 @@ def get_word_set(text):
     а также самые частотные (так как скорее всего известны пользователю) и наоборот самые редкие слова 
     (вероятно их изучение еще не релевантно для студента среднего уровня).
     """
-    words = nltk.word_tokenize(text)
+    words = nltk.word_tokenize(text, language=language)
     pos = [nltk.pos_tag([word]) for word in words]
     word_set = set({})
     for word in words:
@@ -87,13 +91,13 @@ def get_word_set(text):
 
 def get_sentence_list(text):
     """Текст делится на предложения, результат сохраняется в списке строк sentence_list."""
-    sentence_list = nltk.sent_tokenize(text)
+    sentence_list = nltk.sent_tokenize(text, language=language)
     return sentence_list
 
 def find_sent(word, sentence_list):
     """Найти предложение из текста, в котором используется слово word."""
     for sent in sentence_list:
-        if word in nltk.word_tokenize(sent):
+        if word in nltk.word_tokenize(sent, language=language):
             return sent
         
 def get_nltk_tag(word, tagged_sent):
@@ -126,7 +130,7 @@ def get_lemma(word, sentence_list):
     """
     try:
         sent = find_sent(word, sentence_list)
-        sent_tokens = nltk.word_tokenize(sent)
+        sent_tokens = nltk.word_tokenize(sent, language=language)
         tagged_sent = nltk.pos_tag(sent_tokens)
         nltk_tag = get_nltk_tag(word, tagged_sent)
         wordnet_tag = nltk_tag_to_wordnet_tag(nltk_tag)
