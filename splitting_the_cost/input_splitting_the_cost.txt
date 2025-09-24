@@ -1,0 +1,15 @@
+Occasion:
+Jim's birthday
+
+People:
+Andy
+Maria
+Bob
+John
+
+Items:
+A gift card - John - 1000
+A t-shirt - John - 1200
+A greeting card - Andy - 200
+Flowers - Maria - 1000
+A bag - Bob - 1600
